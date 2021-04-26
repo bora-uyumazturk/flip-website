@@ -14,10 +14,10 @@ interface FlipCardProps {
 const FlipCard = ({ children, angle = { x: 0, y: 0 } }: FlipCardProps) => {
   const [zRot, setzRot] = useState(0);
   const styles = useSpring({
-    transform: `perspective(600px) rotateX(${angle.x * 180}deg) rotateY(${
+    transform: `perspective(1000px) rotateX(${angle.x * 180}deg) rotateY(${
       angle.y * 180
     }deg)`,
-    config: { mass: 8, tension: 500, friction: 80 },
+    config: { mass: 10, tension: 500, friction: 80 },
   });
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const FlipCard = ({ children, angle = { x: 0, y: 0 } }: FlipCardProps) => {
   // );
   return (
     <a.div
-      className="card absolute flex flex-col justify-center items-center w-full h-full rounded-md shadow bg-white font-semibold"
+      className="card absolute flex flex-col justify-center items-center w-full h-full p-10 rounded-md shadow bg-white font-base"
       style={styles}
     >
       <div
