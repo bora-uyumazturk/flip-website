@@ -2,8 +2,8 @@ import React, { useState, useRef, MouseEvent } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
 
-export const useTapToFlip = () => {
-  const [angle, setAngle] = useState({ x: 0, y: 0 });
+export const useTapToFlip = ({ defaultAngle = { x: 0, y: 0 } }) => {
+  const [angle, setAngle] = useState(defaultAngle);
   const ref = useRef<HTMLDivElement>(null);
   const onDivClick = (e: MouseEvent) => {
     if (ref && ref.current) {
@@ -20,8 +20,6 @@ export const useTapToFlip = () => {
           y: ref.current.clientHeight,
         },
       });
-      console.log(coordinates);
-      console.log(direction);
       setAngle(updateAngle({ angle: angle, direction: direction }));
     }
   };

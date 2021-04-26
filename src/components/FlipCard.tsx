@@ -21,7 +21,7 @@ const FlipCard = ({ children, angle = { x: 0, y: 0 } }: FlipCardProps) => {
 
   return (
     <a.div
-      className="flex flex-col justify-center items-center h-48 w-64 rounded-md shadow bg-white font-semibold"
+      className="card absolute flex flex-col justify-center items-center w-full h-full rounded-md shadow bg-white font-semibold"
       style={styles}
     >
       {children}
