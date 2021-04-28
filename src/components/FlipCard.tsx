@@ -9,51 +9,38 @@ interface Angle {
 interface FlipCardProps {
   children: React.ReactElement;
   angle?: Angle;
+  onRest?: () => void;
 }
 
-const FlipCard = ({ children, angle = { x: 0, y: 0 } }: FlipCardProps) => {
+const FlipCard = ({
+  children,
+  angle = { x: 0, y: 0 },
+  onRest = () => {},
+}: FlipCardProps) => {
   const [zRot, setzRot] = useState(0);
-  const [flexJustify, setFlexJustify] = useState(1);
   const styles = useSpring({
     transform: `perspective(2000px) rotateX(${angle.x * 180}deg) rotateY(${
       angle.y * 180
     }deg)`,
+    opacity: (angle.x + angle.y) % 2 === 0 ? 1 : 0,
     config: { mass: 10, tension: 500, friction: 80 },
+    onRest: onRest,
   });
 
   useEffect(() => {
     // when coming on to screen turn content right side up
-    if ((1 + angle.x + angle.y) % 2) {
+    if ((angle.x + angle.y) % 2 === 0) {
       setzRot(180 * Math.min(Math.abs(angle.x), Math.abs(angle.y)));
-      setFlexJustify(Math.min(Math.abs(angle.x), Math.abs(angle.y)) % 2);
     }
   }, [angle]);
 
-  // return (
-  //   <a.div
-  //     className={`card absolute flex flex-col ${
-  //       flexJustify ? "justify-end" : "justify-start"
-  //     } items-center w-full h-full p-10 rounded-md shadow-lg bg-white font-base`}
-  //     style={styles}
-  //   >
-  //     <div
-  //       className="h-full w-full"
-  //       style={{
-  //         transform: `rotateZ(${zRot}deg)`,
-  //       }}
-  //     >
-  //       {children}
-  //     </div>
-  //   </a.div>
-  // );
-
   return (
     <a.div
-      className={`card absolute w-full h-full p-10 rounded-md shadow-lg bg-white font-base`}
+      className={`card absolute p-6 w-full h-full rounded-md shadow-lg bg-white font-base`}
       style={styles}
     >
       <div
-        className="h-full w-full"
+        className={`h-full w-full`}
         style={{
           transform: `rotateZ(${zRot}deg)`,
         }}
