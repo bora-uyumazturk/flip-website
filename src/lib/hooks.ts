@@ -1,4 +1,4 @@
-import React, { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, MouseEvent } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
 

@@ -4,11 +4,11 @@ const About = () => {
   return (
     <div className="h-full w-full flex flex-row space-x-10 justify-center items-center">
       <img
-        className="h-48 w-48 rounded-full border border-gray-800"
+        className="h-48 w-48 rounded-full border border-black shadow-sm"
         src="bora_pic.jpeg"
       />
       <div className="flex-none flex flex-col justify-between h-48 w-64">
-        <p className="text-lg">Hello, my name is Bora</p>
+        <p className="text-lg">Hi, I'm Bora</p>
         <p className="text-gray-500">
           I'm a machine learning engineer at{" "}
           <a

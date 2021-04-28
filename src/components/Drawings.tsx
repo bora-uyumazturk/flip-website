@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import React, { MouseEvent } from "react";
 
 const files = [
   "milo.png",
@@ -17,18 +17,20 @@ const files = [
 
 const Drawings = () => {
   return (
-    <div className="min-w-full grid grid-rows-3 grid-flow-col gap-x-12 gap-y-10">
-      {files.map((f, i) => {
-        return (
-          <img
-            className="shadow-lg transition duration-200 transform hover:scale-125 rounded-md h-20 w-20"
-            src={`drawings/${f}`}
-            onClick={(e: MouseEvent) => {
-              e.stopPropagation();
-            }}
-          />
-        );
-      })}
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="grid grid-rows-3 grid-flow-col gap-x-20 gap-y-10 p-4">
+        {files.map((f, i) => {
+          return (
+            <img
+              className="shadow-lg transition duration-200 transform hover:scale-125 rounded-md h-20 w-20"
+              src={`drawings/${f}`}
+              onClick={(e: MouseEvent) => {
+                e.stopPropagation();
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
