@@ -39,7 +39,7 @@ const PublicationCard = ({ title, abstract, links }: Publication) => {
         />
       </svg>
       <div className="w-full flex flex-col space-y-2 text-black">
-        <div>{title}</div>
+        <div className="cursor-pointer">{title}</div>
         {clicked && (
           <>
             <div

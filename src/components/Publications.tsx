@@ -39,18 +39,33 @@ const publications = [
 ];
 
 const Publications = ({ front }: { front: boolean }) => {
-  const [overflow, setOverflow] = useState("overflow-hidden");
+  const [overflow, setOverflow] = useState("clip");
 
   useEffect(() => {
     if (front) {
-      setOverflow("overflow-auto");
+      setOverflow("scroll");
     } else {
-      setOverflow("overflow-hidden");
+      // HACK: Added this because Firefox had an issue where having a
+      // scroll view in front of another scroll view blocked its scroll
+      // events (even if the front scroll view is turned backwards). My
+      // workaround is to after a hopefully unnoticeable period of time
+      // conver the scroll behavior to clip, which deactivates all
+      // scroll events, and therefore allows the scroll events on the
+      // div that is further back to fire.
+      setOverflow("hidden");
+      setTimeout(() => {
+        setOverflow("clip");
+      }, 60);
     }
   }, [front]);
 
   return (
-    <div className={`h-full w-full flex flex-col space-y-4 ${overflow} pr-4`}>
+    <div
+      className={`absolute h-full w-full flex flex-col space-y-4 pr-4`}
+      style={{
+        overflow: overflow,
+      }}
+    >
       <div>Publications</div>
       {publications.map((p) => {
         return (

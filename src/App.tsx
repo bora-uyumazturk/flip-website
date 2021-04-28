@@ -26,11 +26,11 @@ function App() {
         <FlipCard angle={angles.home}>
           <About />
         </FlipCard>
-        <FlipCard angle={angles.top}>
-          <Publications front={(angles.top.x + angles.top.y) % 2 === 0} />
-        </FlipCard>
         <FlipCard angle={angles.bottom}>
           <SideProjects front={(angles.bottom.x + angles.bottom.y) % 2 === 0} />
+        </FlipCard>
+        <FlipCard angle={angles.top}>
+          <Publications front={(angles.top.x + angles.top.y) % 2 === 0} />
         </FlipCard>
       </div>
     </div>
