@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import PublicationCard from "./PublicationCard";
 
@@ -72,9 +72,19 @@ const sideProjects = [
   },
 ];
 
-const SideProjects = () => {
+const SideProjects = ({ front }: { front: boolean }) => {
+  const [overflow, setOverflow] = useState("overflow-hidden");
+
+  useEffect(() => {
+    if (front) {
+      setOverflow("overflow-auto");
+    } else {
+      setOverflow("overflow-hidden");
+    }
+  }, [front]);
+
   return (
-    <div className={`h-full w-full flex flex-col space-y-4 overflow-auto pr-4`}>
+    <div className={`h-full w-full flex flex-col space-y-4 ${overflow} pr-4`}>
       <div>Side Projects</div>
       {sideProjects.map((p) => {
         return (
