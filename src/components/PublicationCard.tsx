@@ -16,29 +16,31 @@ const PublicationCard = ({ title, abstract, links }: Publication) => {
 
   return (
     <div
-      className="w-full flex flex-row space-x-2 flex-none hover:text-blue-400"
+      className="max-w-max flex flex-row space-x-2 flex-none hover:text-blue-400"
       onClick={(e: MouseEvent) => {
         e.stopPropagation();
         setClicked(!clicked);
       }}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className={`h-5 w-5 transform translate-y-0.5 ${
-          clicked ? "rotate-90" : ""
-        } cursor-pointer`}
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-      <div className="w-full flex flex-col space-y-2 text-black">
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`h-5 w-5 transform translate-y-0.5 ${
+            clicked ? "rotate-90" : ""
+          } cursor-pointer`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+      <div className="flex flex-col space-y-2 text-black">
         <div className="cursor-pointer">{title}</div>
         {clicked && (
           <>

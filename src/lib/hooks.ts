@@ -13,14 +13,16 @@ export const useTapToFlip = ({ defaultAngle = { x: 0, y: 0 } }) => {
           -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
       };
 
-      const direction = coordinatesToDirection({
-        coordinates: coordinates,
-        dimensions: {
-          x: ref.current.clientWidth,
-          y: ref.current.clientHeight,
-        },
-      });
-      setAngle(updateAngle({ angle: angle, direction: direction }));
+      if (coordinates.x * coordinates.x + coordinates.y * coordinates.y > 100) {
+        const direction = coordinatesToDirection({
+          coordinates: coordinates,
+          dimensions: {
+            x: ref.current.clientWidth,
+            y: ref.current.clientHeight,
+          },
+        });
+        setAngle(updateAngle({ angle: angle, direction: direction }));
+      }
     }
   };
 
@@ -54,6 +56,8 @@ export const useFlipGroup = () => {
 
   const [active, setActive] = useState("home");
 
+  const [nextActive, setNextActive] = useState<string | undefined>(undefined);
+
   const ref = useRef<HTMLDivElement>(null);
 
   const onClick = (e: MouseEvent) => {
@@ -76,6 +80,8 @@ export const useFlipGroup = () => {
 
       const nextView = active === direction ? "home" : direction;
 
+      setNextActive(active === direction ? direction : "home");
+
       const activeAngle = updateAngle({
         angle: angles[active],
         direction: direction,
@@ -97,5 +103,37 @@ export const useFlipGroup = () => {
     }
   };
 
-  return { angles: angles, ref: ref, onClick: onClick };
+  const onMouseMove = (e: MouseEvent) => {
+    if (ref && ref.current) {
+      const coordinates = {
+        x: e.pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
+        y:
+          -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
+      };
+
+      console.log(coordinates);
+      const direction = coordinatesToDirection({
+        coordinates: coordinates,
+        dimensions: {
+          x: ref.current.clientWidth,
+          y: ref.current.clientHeight,
+        },
+      });
+
+      // const nextView = active === "home" ? direction : "home";
+
+      const nextView = active === direction ? "home" : direction;
+
+      setNextActive(nextView);
+      console.log(nextActive);
+    }
+  };
+
+  return {
+    angles: angles,
+    ref: ref,
+    onClick: onClick,
+    nextActive: nextActive,
+    onMouseMove: onMouseMove,
+  };
 };

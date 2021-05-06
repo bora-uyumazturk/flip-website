@@ -4,7 +4,19 @@ module.exports = {
   theme: {
     extend: {
       minWidth: {
-        "192": "36rem",
+        "192": "40rem",
+      },
+      maxWidth: {
+        "192": "40rem",
+      },
+      minHeight: {
+        "192": "24rem",
+      },
+      maxHeight: {
+        "192": "24rem",
+      },
+      scale: {
+        "160": "1.6",
       },
     },
   },
