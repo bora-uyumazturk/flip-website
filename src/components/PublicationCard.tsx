@@ -16,7 +16,7 @@ const PublicationCard = ({ title, abstract, links }: Publication) => {
 
   return (
     <div
-      className="w-full flex flex-row space-x-2 flex-none"
+      className="w-full flex flex-row space-x-2 flex-none hover:text-blue-400"
       onClick={(e: MouseEvent) => {
         e.stopPropagation();
         setClicked(!clicked);
@@ -26,7 +26,7 @@ const PublicationCard = ({ title, abstract, links }: Publication) => {
         xmlns="http://www.w3.org/2000/svg"
         className={`h-5 w-5 transform translate-y-0.5 ${
           clicked ? "rotate-90" : ""
-        } hover:text-blue-400 cursor-pointer`}
+        } cursor-pointer`}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
