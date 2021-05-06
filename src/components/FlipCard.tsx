@@ -36,7 +36,7 @@ const FlipCard = ({
 
   return (
     <a.div
-      className={`card absolute p-6 w-full h-full rounded-md shadow-lg bg-white font-base`}
+      className={`card absolute p-8 w-full h-full rounded-md shadow-lg bg-white font-base`}
       style={styles}
     >
       <div

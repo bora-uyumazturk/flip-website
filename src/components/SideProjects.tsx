@@ -1,6 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 
 import PublicationCard from "./PublicationCard";
+
+const SideProjects = ({ front }: { front: boolean }) => {
+  const [overflow, setOverflow] = useState("overflow-hidden");
+
+  useEffect(() => {
+    if (front) {
+      setOverflow("overflow-auto");
+    } else {
+      setOverflow("overflow-hidden");
+    }
+  }, [front]);
+
+  return (
+    <div
+      className={`cursor-default max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
+      onClick={(e: MouseEvent) => {
+        e.stopPropagation();
+      }}
+    >
+      <div className="text-lg max-w-max">💻 Side Projects</div>
+      {sideProjects.map((p) => {
+        return (
+          <PublicationCard
+            key={p.title}
+            title={p.title}
+            abstract={p.abstract}
+            links={p.links}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 const sideProjects = [
   {
@@ -71,33 +104,5 @@ const sideProjects = [
     ],
   },
 ];
-
-const SideProjects = ({ front }: { front: boolean }) => {
-  const [overflow, setOverflow] = useState("overflow-hidden");
-
-  useEffect(() => {
-    if (front) {
-      setOverflow("overflow-auto");
-    } else {
-      setOverflow("overflow-hidden");
-    }
-  }, [front]);
-
-  return (
-    <div className={`h-full w-full flex flex-col space-y-4 ${overflow} pr-4`}>
-      <div>Side Projects</div>
-      {sideProjects.map((p) => {
-        return (
-          <PublicationCard
-            key={p.title}
-            title={p.title}
-            abstract={p.abstract}
-            links={p.links}
-          />
-        );
-      })}
-    </div>
-  );
-};
 
 export default SideProjects;

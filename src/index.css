@@ -7,3 +7,33 @@
   backface-visibility: hidden;
   /* for chrome, see: https://stackoverflow.com/questions/48701413/css-overflow-scroll-issue-in-chrome */
 }
+
+.home-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='35' height='42' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🏠</text></svg>")
+      16 0,
+    auto;
+}
+
+.left-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='35' height='42' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>📚</text></svg>")
+      16 0,
+    auto;
+}
+
+.right-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='35' height='42' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🎨</text></svg>")
+      16 0,
+    auto;
+}
+
+.top-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='35' height='42' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>📃</text></svg>")
+      16 0,
+    auto;
+}
+
+.bottom-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='35' height='42' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>💻</text></svg>")
+      16 0,
+    auto;
+}
