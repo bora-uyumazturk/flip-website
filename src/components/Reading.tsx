@@ -15,7 +15,7 @@ const Reading = () => {
           onClick={(e: MouseEvent) => e.stopPropagation()}
         >
           {readingList.map((book) => (
-            <a href={book.link} target="_blank">
+            <a href={book.link} rel="noopener noreferrer" target="_blank">
               <img
                 className="shadow-lg transition duration-200 transform hover:scale-110 rounded-md h-56"
                 src={book.image}
