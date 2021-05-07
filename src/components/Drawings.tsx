@@ -27,7 +27,7 @@ const Drawings = () => {
         🎨 Gallery
       </div>
       <div
-        className="cursor-default w-full h-full flex justify-start items-center pl-4 py-2 space-x-4 overflow-x-scroll overflow-y-visible"
+        className="cursor-default w-full h-full flex justify-start items-center pl-4 py-2 space-x-5 overflow-x-scroll overflow-y-visible"
         onClick={(e: MouseEvent) => {
           e.stopPropagation();
         }}
