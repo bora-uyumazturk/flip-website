@@ -111,7 +111,6 @@ export const useFlipGroup = () => {
           -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
       };
 
-      console.log(coordinates);
       const direction = coordinatesToDirection({
         coordinates: coordinates,
         dimensions: {
@@ -125,7 +124,6 @@ export const useFlipGroup = () => {
       const nextView = active === direction ? "home" : direction;
 
       setNextActive(nextView);
-      console.log(nextActive);
     }
   };
 

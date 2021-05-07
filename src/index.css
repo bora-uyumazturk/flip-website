@@ -5,6 +5,7 @@
 
 .card {
   backface-visibility: hidden;
+  user-select: none;
   /* for chrome, see: https://stackoverflow.com/questions/48701413/css-overflow-scroll-issue-in-chrome */
 }
 
