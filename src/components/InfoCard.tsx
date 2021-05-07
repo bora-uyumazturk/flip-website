@@ -5,13 +5,13 @@ interface Link {
   linkName: string;
 }
 
-interface Publication {
+interface Entry {
   title: string;
   abstract: string;
   links: Link[];
 }
 
-const PublicationCard = ({ title, abstract, links }: Publication) => {
+const InfoCard = ({ title, abstract, links }: Entry) => {
   const [clicked, setClicked] = useState(false);
 
   return (
@@ -72,4 +72,4 @@ const PublicationCard = ({ title, abstract, links }: Publication) => {
   );
 };
 
-export default PublicationCard;
+export default InfoCard;

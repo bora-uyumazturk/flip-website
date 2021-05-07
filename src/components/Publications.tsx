@@ -1,57 +1,12 @@
-import React, { useState, useEffect, MouseEvent } from "react";
-
-import PublicationCard from "./PublicationCard";
+import InfoCardLayout from "./InfoCardLayout";
 
 const Publications = ({ front }: { front: boolean }) => {
-  const [overflow, setOverflow] = useState("clip");
-
-  useEffect(() => {
-    if (front) {
-      setOverflow("scroll");
-    } else {
-      // HACK: Added this because Firefox had an issue where having a
-      // scroll view in front of another scroll view blocked its scroll
-      // events (even if the front scroll view is turned backwards). My
-      // workaround is to after a hopefully unnoticeable period of time
-      // conver the scroll behavior to clip, which deactivates all
-      // scroll events, and therefore allows the scroll events on the
-      // div that is further back to fire.
-      setOverflow("hidden");
-      setTimeout(() => {
-        setOverflow("clip");
-      }, 60);
-    }
-  }, [front]);
-
   return (
-    <div className="max-h-full flex flex-col space-y-2">
-      <div
-        className="cursor-default text-lg max-w-max pr-3"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
-        📃 Publications
-      </div>
-      <div
-        className={`cursor-default max-h-full max-w-max w-full flex flex-col space-y-4 pr-4`}
-        style={{
-          overflow: overflow,
-        }}
-        onClick={(e: MouseEvent) => {
-          e.stopPropagation();
-        }}
-      >
-        {publications.map((p) => {
-          return (
-            <PublicationCard
-              key={p.title}
-              title={p.title}
-              abstract={p.abstract}
-              links={p.links}
-            />
-          );
-        })}
-      </div>
-    </div>
+    <InfoCardLayout
+      title="📃 Publications"
+      entryList={publications}
+      front={front}
+    />
   );
 };
 
