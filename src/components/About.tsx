@@ -5,9 +5,7 @@ const About = () => {
     <div className="h-full w-full flex justify-center items-center">
       <div
         className="cursor-default w-full max-w-max flex flex-row space-x-10 justify-center items-center"
-        onClick={(e: MouseEvent) => {
-          e.stopPropagation();
-        }}
+        onClick={(e: MouseEvent) => e.stopPropagation()}
       >
         <img
           className="h-48 w-48 rounded-full border border-black shadow-sm"
@@ -23,14 +21,12 @@ const About = () => {
               href="https://www.viaduct.ai"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e: MouseEvent) => {
-                e.stopPropagation();
-              }}
+              onClick={(e: MouseEvent) => e.stopPropagation()}
             >
               viaduct.ai
             </a>
             , a startup building machine learning solutions for connected
-            vehicles. Feel free to click around to learn what else I do.
+            vehicles. I also spend time making silly things like this.
           </p>
         </div>
       </div>

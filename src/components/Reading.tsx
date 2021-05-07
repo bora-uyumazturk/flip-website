@@ -2,7 +2,7 @@ import React, { MouseEvent } from "react";
 
 const Reading = () => {
   return (
-    <div className="max-h-full w-full flex flex-col space-y-6">
+    <div className="max-h-full w-full flex flex-col space-y-8">
       <div
         className="cursor-default text-lg max-w-max pr-3"
         onClick={(e: MouseEvent) => e.stopPropagation()}
@@ -10,7 +10,7 @@ const Reading = () => {
         📚 Bookshelf
       </div>
       <div
-        className="cursor-default mt-10 w-full flex justify-center items-center space-x-10"
+        className="cursor-default w-full flex justify-center space-x-10"
         onClick={(e: MouseEvent) => e.stopPropagation()}
       >
         {readingList.map((book) => (
