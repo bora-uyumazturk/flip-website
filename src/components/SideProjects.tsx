@@ -14,23 +14,28 @@ const SideProjects = ({ front }: { front: boolean }) => {
   }, [front]);
 
   return (
-    <div
-      className={`cursor-default max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
-      onClick={(e: MouseEvent) => {
-        e.stopPropagation();
-      }}
-    >
-      <div className="text-lg max-w-max">💻 Side Projects</div>
-      {sideProjects.map((p) => {
-        return (
-          <PublicationCard
-            key={p.title}
-            title={p.title}
-            abstract={p.abstract}
-            links={p.links}
-          />
-        );
-      })}
+    <div className="max-h-full flex flex-col space-y-2">
+      <div
+        className="cursor-default text-lg max-w-max pr-3"
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+      >
+        💻 Side Projects
+      </div>
+      <div
+        className={`cursor-default max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+      >
+        {sideProjects.map((p) => {
+          return (
+            <PublicationCard
+              key={p.title}
+              title={p.title}
+              abstract={p.abstract}
+              links={p.links}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

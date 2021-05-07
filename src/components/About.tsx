@@ -14,7 +14,7 @@ const About = () => {
           src="bora_pic.jpeg"
           alt="me"
         />
-        <div className="flex-none flex flex-col justify-between h-48 w-64">
+        <div className="flex-none flex flex-col justify-between h-48 w-64 py-2">
           <p className="text-lg">Hi, I'm Bora</p>
           <p className="text-gray-500">
             I'm a machine learning engineer at{" "}

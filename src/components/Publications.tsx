@@ -24,26 +24,33 @@ const Publications = ({ front }: { front: boolean }) => {
   }, [front]);
 
   return (
-    <div
-      className={`absolute cursor-default max-h-full max-w-max w-full flex flex-col space-y-4 pr-4`}
-      style={{
-        overflow: overflow,
-      }}
-      onClick={(e: MouseEvent) => {
-        e.stopPropagation();
-      }}
-    >
-      <div className="text-lg">📃 Publications</div>
-      {publications.map((p) => {
-        return (
-          <PublicationCard
-            key={p.title}
-            title={p.title}
-            abstract={p.abstract}
-            links={p.links}
-          />
-        );
-      })}
+    <div className="max-h-full flex flex-col space-y-2">
+      <div
+        className="cursor-default text-lg max-w-max pr-3"
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+      >
+        📃 Publications
+      </div>
+      <div
+        className={`cursor-default max-h-full max-w-max w-full flex flex-col space-y-4 pr-4`}
+        style={{
+          overflow: overflow,
+        }}
+        onClick={(e: MouseEvent) => {
+          e.stopPropagation();
+        }}
+      >
+        {publications.map((p) => {
+          return (
+            <PublicationCard
+              key={p.title}
+              title={p.title}
+              abstract={p.abstract}
+              links={p.links}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

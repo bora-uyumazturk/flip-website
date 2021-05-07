@@ -3,14 +3,17 @@ import React, { MouseEvent } from "react";
 const Reading = () => {
   return (
     <>
-      <div
-        className={`max-h-full w-full flex flex-col space-y-6 pr-4`}
-        onClick={(e: MouseEvent) => {
-          e.stopPropagation();
-        }}
-      >
-        <div className="cursor-default text-lg max-w-max">📚 Bookshelf</div>
-        <div className="cursor-default mt-10 w-full flex justify-around items-center">
+      <div className={`max-h-full w-full flex flex-col space-y-6 pr-4`}>
+        <div
+          className="cursor-default text-lg max-w-max pr-3"
+          onClick={(e: MouseEvent) => e.stopPropagation()}
+        >
+          📚 Bookshelf
+        </div>
+        <div
+          className="cursor-default mt-10 w-full flex justify-around items-center"
+          onClick={(e: MouseEvent) => e.stopPropagation()}
+        >
           {readingList.map((book) => (
             <a href={book.link} target="_blank">
               <img
