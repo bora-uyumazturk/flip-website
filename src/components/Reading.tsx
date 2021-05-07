@@ -2,33 +2,31 @@ import React, { MouseEvent } from "react";
 
 const Reading = () => {
   return (
-    <>
-      <div className={`max-h-full w-full flex flex-col space-y-6 pr-4`}>
-        <div
-          className="cursor-default text-lg max-w-max pr-3"
-          onClick={(e: MouseEvent) => e.stopPropagation()}
-        >
-          📚 Bookshelf
-        </div>
-        <div
-          className="cursor-default mt-10 w-full flex justify-around items-center"
-          onClick={(e: MouseEvent) => e.stopPropagation()}
-        >
-          {readingList.map((book) => (
-            <a href={book.link} rel="noopener noreferrer" target="_blank">
-              <img
-                className="shadow-lg transition duration-200 transform hover:scale-110 rounded-md h-56"
-                src={book.image}
-                alt={book.alt}
-                onClick={(e: MouseEvent) => {
-                  e.stopPropagation();
-                }}
-              />
-            </a>
-          ))}
-        </div>
+    <div className="max-h-full w-full flex flex-col space-y-6">
+      <div
+        className="cursor-default text-lg max-w-max pr-3"
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+      >
+        📚 Bookshelf
       </div>
-    </>
+      <div
+        className="cursor-default mt-10 w-full flex justify-center items-center space-x-10"
+        onClick={(e: MouseEvent) => e.stopPropagation()}
+      >
+        {readingList.map((book) => (
+          <a href={book.link} rel="noopener noreferrer" target="_blank">
+            <img
+              className="shadow-lg transition duration-200 transform hover:scale-110 rounded-md h-56"
+              src={book.image}
+              alt={book.alt}
+              onClick={(e: MouseEvent) => {
+                e.stopPropagation();
+              }}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
   );
 };
 
