@@ -55,7 +55,13 @@ const InfoCard = ({ title, abstract, links }: Entry) => {
             <div className="flex flex-row">
               {links.map(({ link, linkName }) => {
                 return (
-                  <a key={link} href={link} target="_blank" className="text-xs">
+                  <a
+                    key={link}
+                    href={link}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-xs"
+                  >
                     [
                     <span className="text-blue-600 hover:underline">
                       {linkName}

@@ -22,6 +22,7 @@ const About = () => {
               className="hover:underline"
               href="https://www.viaduct.ai"
               target="_blank"
+              rel="noopener noreferrer"
               onClick={(e: MouseEvent) => {
                 e.stopPropagation();
               }}
