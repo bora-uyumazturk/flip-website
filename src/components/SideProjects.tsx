@@ -1,42 +1,12 @@
-import React, { useState, useEffect, MouseEvent } from "react";
-
-import PublicationCard from "./PublicationCard";
+import InfoCardLayout from "./InfoCardLayout";
 
 const SideProjects = ({ front }: { front: boolean }) => {
-  const [overflow, setOverflow] = useState("overflow-hidden");
-
-  useEffect(() => {
-    if (front) {
-      setOverflow("overflow-auto");
-    } else {
-      setOverflow("overflow-hidden");
-    }
-  }, [front]);
-
   return (
-    <div className="max-h-full flex flex-col space-y-2">
-      <div
-        className="cursor-default text-lg max-w-max pr-3"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
-        💻 Side Projects
-      </div>
-      <div
-        className={`cursor-default max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
-        {sideProjects.map((p) => {
-          return (
-            <PublicationCard
-              key={p.title}
-              title={p.title}
-              abstract={p.abstract}
-              links={p.links}
-            />
-          );
-        })}
-      </div>
-    </div>
+    <InfoCardLayout
+      title={"💻 Side Projects"}
+      entryList={sideProjects}
+      front={front}
+    />
   );
 };
 
