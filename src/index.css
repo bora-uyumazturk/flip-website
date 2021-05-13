@@ -3,11 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  touch-action: none;
+}
+
 .card {
   -webkit-perspective: 0;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   user-select: none;
+  touch-action: none;
   /* for chrome, see: https://stackoverflow.com/questions/48701413/css-overflow-scroll-issue-in-chrome */
 }
