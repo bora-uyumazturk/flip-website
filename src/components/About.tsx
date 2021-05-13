@@ -33,7 +33,7 @@ const About = () => {
             <span className="font-semibold">
               {`${
                 isBrowser ? "Drag, swipe, and click" : "Swipe"
-              } to navigate around`}
+              } to navigate around.`}
             </span>
           </p>
         </div>
