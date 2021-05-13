@@ -14,7 +14,7 @@ function App() {
     <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-200 md:space-y-20">
       <div
         {...gestureBind()}
-        className="relative h-3/5 w-full max-w-xs md:max-h-192 md:max-w-192 md:min-h-192 md:min-w-192"
+        className="relative w-full h-screen md:max-h-192 md:max-w-192 md:min-h-192 md:min-w-192"
         ref={ref}
         onClick={onClick}
       >
