@@ -3,10 +3,7 @@ import React, { MouseEvent } from "react";
 const About = () => {
   return (
     <div className="h-full w-full flex justify-center items-center">
-      <div
-        className="cursor-default w-full max-w-max flex flex-row space-x-10 justify-center items-center"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
+      <div className="w-full max-w-max flex flex-row space-x-10 justify-center items-center">
         <img
           className="h-48 w-48 rounded-full border border-black shadow-sm"
           src="bora_pic.jpeg"
@@ -17,7 +14,7 @@ const About = () => {
           <p className="text-gray-500">
             I'm a machine learning engineer at{" "}
             <a
-              className="hover:underline"
+              className="cursor-default hover:underline"
               href="https://www.viaduct.ai"
               target="_blank"
               rel="noopener noreferrer"

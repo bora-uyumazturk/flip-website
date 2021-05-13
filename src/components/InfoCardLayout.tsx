@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect } from "react";
 
 import InfoCard from "./InfoCard";
 
@@ -34,15 +34,9 @@ const InfoCardLayout = ({
 
   return (
     <div className="max-h-full flex flex-col space-y-3">
+      <div className="text-lg max-w-max pr-3">{title}</div>
       <div
-        className="cursor-default text-lg max-w-max pr-3"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
-        {title}
-      </div>
-      <div
-        className={`cursor-default max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
-        onClick={(e: MouseEvent) => e.stopPropagation()}
+        className={`max-h-full w-full max-w-max flex flex-col space-y-4 ${overflow} pr-4`}
       >
         {entryList.map((p) => {
           return (

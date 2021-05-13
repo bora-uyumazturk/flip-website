@@ -18,8 +18,8 @@ const InfoCard = ({ title, abstract, links }: Entry) => {
     <div
       className="max-w-max flex flex-row space-x-2 flex-none hover:text-blue-400"
       onClick={(e: MouseEvent) => {
-        e.stopPropagation();
         setClicked(!clicked);
+        e.stopPropagation();
       }}
     >
       <div>
