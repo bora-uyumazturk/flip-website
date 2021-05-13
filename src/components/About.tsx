@@ -23,7 +23,10 @@ const About = () => {
               viaduct.ai
             </a>
             , a startup building machine learning solutions for connected
-            vehicles. I also spend time making silly things like this.
+            vehicles. I also spend time making silly things like this.{" "}
+            <span className="font-semibold">
+              Drag, swipe, and click to navigate around.
+            </span>
           </p>
         </div>
       </div>

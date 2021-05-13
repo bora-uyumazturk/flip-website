@@ -25,7 +25,7 @@ const FlipCard = ({
       angle.y * 180
     }deg)`,
     opacity: front ? 1 : 0,
-    config: { mass: 10, tension: 300, friction: 80 },
+    config: { mass: 10, tension: 400, friction: 80 },
     onRest: onRest,
   });
 
@@ -38,11 +38,11 @@ const FlipCard = ({
 
   return (
     <a.div
-      className={`card absolute p-8 w-full h-full rounded-md shadow-lg bg-white font-base`}
+      className={`card absolute w-full h-full rounded-md bg-white font-base`}
       style={styles}
     >
       <div
-        className={`h-full w-full`}
+        className={`h-full w-full shadow-lg p-8 `}
         style={{
           transform: `rotateZ(${zRot}deg)`,
         }}
