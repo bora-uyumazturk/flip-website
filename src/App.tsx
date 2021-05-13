@@ -1,3 +1,5 @@
+import { isMobile } from "react-device-detect";
+
 import FlipCard from "./components/FlipCard";
 import About from "./components/About";
 import Drawings from "./components/Drawings";
@@ -18,21 +20,47 @@ function App() {
         ref={ref}
         onClick={onClick}
       >
-        <FlipCard angle={angles.right}>
-          <Drawings />
-        </FlipCard>
-        <FlipCard angle={angles.left}>
-          <Reading />
-        </FlipCard>
-        <FlipCard angle={angles.home}>
-          <About />
-        </FlipCard>
-        <FlipCard angle={angles.bottom}>
-          <SideProjects front={(angles.bottom.x + angles.bottom.y) % 2 === 0} />
-        </FlipCard>
-        <FlipCard angle={angles.top}>
-          <Publications front={(angles.top.x + angles.top.y) % 2 === 0} />
-        </FlipCard>
+        {isMobile ? (
+          <>
+            <FlipCard angle={angles.home}>
+              <About />
+            </FlipCard>
+            <FlipCard angle={angles.top}>
+              <Publications front={(angles.top.x + angles.top.y) % 2 === 0} />
+            </FlipCard>
+            <FlipCard angle={angles.left}>
+              <Reading />
+            </FlipCard>
+            <FlipCard angle={angles.bottom}>
+              <SideProjects
+                front={(angles.bottom.x + angles.bottom.y) % 2 === 0}
+              />
+            </FlipCard>
+            <FlipCard angle={angles.right}>
+              <Drawings />
+            </FlipCard>{" "}
+          </>
+        ) : (
+          <>
+            <FlipCard angle={angles.right}>
+              <Drawings />
+            </FlipCard>
+            <FlipCard angle={angles.left}>
+              <Reading />
+            </FlipCard>
+            <FlipCard angle={angles.home}>
+              <About />
+            </FlipCard>
+            <FlipCard angle={angles.bottom}>
+              <SideProjects
+                front={(angles.bottom.x + angles.bottom.y) % 2 === 0}
+              />
+            </FlipCard>
+            <FlipCard angle={angles.top}>
+              <Publications front={(angles.top.x + angles.top.y) % 2 === 0} />
+            </FlipCard>
+          </>
+        )}
       </div>
     </div>
   );

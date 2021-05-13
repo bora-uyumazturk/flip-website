@@ -23,7 +23,7 @@ const Drawings = () => {
       <div className="text-lg md:max-w-max pr-3">🎨 Gallery</div>
       <div
         {...useStopDrag()()}
-        className="w-full h-full flex flex-col md:flex-row justify-start items-center md:pl-4 py-2 md:pb-3 px-2 md:px-0 md:py-0 md:space-x-5 overflow-auto"
+        className="w-full h-full flex flex-col md:flex-row justify-start items-center md:pl-4 py-2 md:pb-3 px-2 md:px-0 md:py-0 md:space-x-5 overflow-scroll"
       >
         {files.map((f, i) => {
           return (
