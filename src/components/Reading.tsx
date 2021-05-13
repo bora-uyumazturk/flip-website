@@ -4,11 +4,11 @@ const Reading = () => {
   return (
     <div className="max-h-full w-full flex flex-col space-y-8">
       <div className="text-lg max-w-max pr-3">📚 Bookshelf</div>
-      <div className="w-full flex justify-center space-x-10">
+      <div className="w-full flex flex-col pt-3 pb-6 md:py-0 space-y-6 md:space-y-0 md:flex-row items-center md:justify-center md:space-x-10 overflow-y-scroll md:overflow-y-visible">
         {readingList.map((book) => (
           <a href={book.link} rel="noopener noreferrer" target="_blank">
             <img
-              className="shadow-lg transition duration-200 transform hover:scale-110 rounded-md h-56"
+              className="shadow-lg transition duration-200 transform md:hover:scale-110 rounded-md h-72 md:h-56"
               src={book.image}
               alt={book.alt}
               onClick={(e: MouseEvent) => {
