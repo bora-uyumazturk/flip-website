@@ -10,3 +10,7 @@ for animations.
 ## Directions
 
 To run locally, clone the repo and run `yarn install && yarn start`.
+
+## Caveats
+
+This doesn't well work on mobile due to unfortunate interactions between the `backface-visibility` css property and scrolling. 
