@@ -1,6 +1,8 @@
-import React, { MouseEvent } from "react";
+import React from "react";
 
 import { useStopDrag } from "../lib/hooks";
+
+import { isBrowser } from "react-device-detect";
 
 const About = () => {
   return (
@@ -27,7 +29,9 @@ const About = () => {
             , a startup building machine learning solutions for connected
             vehicles. I also spend time making silly things like this.{" "}
             <span className="font-semibold">
-              Drag, swipe, and click to navigate around.
+              {`${
+                isBrowser ? "Drag, swipe, and click" : "Swipe"
+              } to navigate around`}
             </span>
           </p>
         </div>

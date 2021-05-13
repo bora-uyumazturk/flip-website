@@ -1,8 +1,10 @@
 import { useDrag } from "react-use-gesture";
 
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
+
+import { isBrowser } from "react-device-detect";
 
 export const useFlipGroup = () => {
   const defaultAngle: { [index: string]: { x: number; y: number } } = {
@@ -35,9 +37,6 @@ export const useFlipGroup = () => {
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const [direction, setDirection] = useState<
-    "top" | "left" | "bottom" | "right"
-  >("top");
   const bind = useDrag(
     ({
       down,
@@ -59,7 +58,6 @@ export const useFlipGroup = () => {
         } else {
           newDirection = "top";
         }
-        setDirection(newDirection);
 
         const nextView = active === "home" ? newDirection : "home";
         // setNextActive(nextView);
@@ -84,7 +82,7 @@ export const useFlipGroup = () => {
         newAngles[nextView] = nextAngle;
         setAngles(newAngles);
         setActive(nextView);
-      } else if (ref && ref.current && !down) {
+      } else if (ref && ref.current && !down && isBrowser) {
         // simulates on click
         const coordinates = {
           x: pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
@@ -142,10 +140,8 @@ export const useFlipGroup = () => {
 
 export const useStopDrag = () => {
   return useDrag(({ event, down, last, swipe: [x, y] }) => {
-    console.log([x, y]);
-    if (x === 0 && y === 0 && last && !down) {
+    if (x === 0 && y === 0 && last && isBrowser) {
       event.stopPropagation();
     }
-    event.stopPropagation();
   });
 };
