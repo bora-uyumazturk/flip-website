@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
 
-import { isBrowser } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
 export const useFlipGroup = () => {
   const defaultAngle: { [index: string]: { x: number; y: number } } = {
@@ -82,7 +82,7 @@ export const useFlipGroup = () => {
         newAngles[nextView] = nextAngle;
         setAngles(newAngles);
         setActive(nextView);
-      } else if (ref && ref.current && !down && isBrowser) {
+      } else if (ref && ref.current && !down && !isMobile) {
         // simulates on click
         const coordinates = {
           x: pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
@@ -121,8 +121,8 @@ export const useFlipGroup = () => {
 
         setNextActive(undefined);
       }
-    }
-    // { swipeDistance: [10, 10], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
+    },
+    { swipeDistance: [20, 20], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
   );
 
   const onClick = () => {
@@ -140,7 +140,7 @@ export const useFlipGroup = () => {
 
 export const useStopDrag = () => {
   return useDrag(({ event, down, last, swipe: [x, y] }) => {
-    if (x === 0 && y === 0 && last && isBrowser) {
+    if (x === 0 && y === 0 && last && !isMobile) {
       event.stopPropagation();
     }
   });
