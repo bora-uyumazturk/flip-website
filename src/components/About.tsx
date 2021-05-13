@@ -2,7 +2,7 @@ import React from "react";
 
 import { useStopDrag } from "../lib/hooks";
 
-import { isBrowser } from "react-device-detect";
+import { isBrowser, isMobile } from "react-device-detect";
 
 const About = () => {
   return (
@@ -18,7 +18,9 @@ const About = () => {
           <p className="text-gray-500 text-center text-sm md:text-base md:text-left">
             I'm a machine learning engineer at{" "}
             <a
-              className="cursor-pointer hover:underline"
+              className={`cursor-pointer ${
+                isMobile ? "underline" : "hover:underline"
+              }`}
               href="https://www.viaduct.ai"
               target="_blank"
               rel="noopener noreferrer"

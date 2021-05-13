@@ -1,5 +1,7 @@
 import React, { useState, MouseEvent } from "react";
 
+import { isMobile } from "react-device-detect";
+
 import { useStopDrag } from "../lib/hooks";
 
 interface Link {
@@ -16,14 +18,34 @@ interface Entry {
 const InfoCard = ({ title, abstract, links }: Entry) => {
   const [clicked, setClicked] = useState(false);
 
-  return (
+  const bind = useStopDrag();
+
+  return isMobile ? (
+    <div
+      className={`max-w-max flex flex-row space-x-2 flex-none underline text-purple-500`}
+      {...bind()}
+    >
+      <div className="flex flex-col space-y-2">
+        <div className="cursor-pointer">
+          <a
+            key={links[0].link}
+            href={links[0].link}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {title}
+          </a>
+        </div>
+      </div>
+    </div>
+  ) : (
     <div
       className="max-w-max flex flex-row space-x-2 flex-none hover:text-blue-400"
       onClick={(e: MouseEvent) => {
         setClicked(!clicked);
         e.stopPropagation();
       }}
-      {...useStopDrag()()}
+      {...bind()}
     >
       <div>
         <svg
