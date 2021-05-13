@@ -141,5 +141,11 @@ export const useFlipGroup = () => {
 };
 
 export const useStopDrag = () => {
-  return useDrag(({ event }) => event.stopPropagation());
+  return useDrag(({ event, down, last, swipe: [x, y] }) => {
+    console.log([x, y]);
+    if (x === 0 && y === 0 && last && !down) {
+      event.stopPropagation();
+    }
+    event.stopPropagation();
+  });
 };
