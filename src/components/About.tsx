@@ -1,5 +1,7 @@
 import React, { MouseEvent } from "react";
 
+import { useStopDrag } from "../lib/hooks";
+
 const About = () => {
   return (
     <div className="h-full w-full flex justify-center items-center">
@@ -14,11 +16,11 @@ const About = () => {
           <p className="text-gray-500 text-center text-sm md:text-base md:text-left">
             I'm a machine learning engineer at{" "}
             <a
-              className="cursor-default hover:underline"
+              className="cursor-pointer hover:underline"
               href="https://www.viaduct.ai"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e: MouseEvent) => e.stopPropagation()}
+              {...useStopDrag()()}
             >
               viaduct.ai
             </a>

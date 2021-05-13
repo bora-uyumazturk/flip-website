@@ -44,92 +44,91 @@ export const useFlipGroup = () => {
       swipe: [x, y],
       delta: [dx, dy],
       movement: [swipeX, swipeY],
+      xy: [pageX, pageY],
       intentional,
     }) => {
+      console.log([x, y]);
       if (x !== 0 || y !== 0) {
         let newDirection: "top" | "left" | "bottom" | "right";
         if (x === 1) {
           newDirection = "right";
-        } else if (x === -1) {
-          newDirection = "left";
         } else if (y === 1) {
           newDirection = "bottom";
+        } else if (x === -1) {
+          newDirection = "left";
         } else {
           newDirection = "top";
         }
         setDirection(newDirection);
 
         const nextView = active === "home" ? newDirection : "home";
-        setNextActive(nextView);
-      } else {
+        // setNextActive(nextView);
+        console.log(newDirection);
+
+        console.log("changing view");
+        const activeAngle = updateAngle({
+          angle: angles[active],
+          direction: newDirection,
+        });
+
+        const nextAngle = updateAngle({
+          angle: angles[nextView],
+          direction: newDirection,
+        });
+
+        let newAngles: {
+          [index: string]: { x: number; y: number };
+        } = Object.assign({}, angles);
+
+        newAngles[active] = activeAngle;
+        newAngles[nextView] = nextAngle;
+        setAngles(newAngles);
+        setActive(nextView);
+      } else if (ref && ref.current && !down) {
+        // simulates on click
+        const coordinates = {
+          x: pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
+          y:
+            -1 * (pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
+        };
+
+        const direction = coordinatesToDirection({
+          coordinates: coordinates,
+          dimensions: {
+            x: ref.current.clientWidth,
+            y: ref.current.clientHeight,
+          },
+        });
+
+        const nextView = active === "home" ? direction : "home";
+
+        const activeAngle = updateAngle({
+          angle: angles[active],
+          direction: direction,
+        });
+
+        const nextAngle = updateAngle({
+          angle: angles[nextView],
+          direction: direction,
+        });
+
+        let newAngles: {
+          [index: string]: { x: number; y: number };
+        } = Object.assign({}, angles);
+
+        newAngles[active] = activeAngle;
+        newAngles[nextView] = nextAngle;
+        setAngles(newAngles);
+        setActive(nextView);
+
         setNextActive(undefined);
       }
-    },
-    { swipeDistance: [10, 10], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
+    }
+    // { swipeDistance: [10, 10], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
   );
 
-  // fires after drag event
-  const onClick = (e: MouseEvent) => {
-    if (nextActive) {
-      const activeAngle = updateAngle({
-        angle: angles[active],
-        direction: direction,
-      });
-
-      const nextAngle = updateAngle({
-        angle: angles[nextActive],
-        direction: direction,
-      });
-
-      let newAngles: {
-        [index: string]: { x: number; y: number };
-      } = Object.assign({}, angles);
-
-      newAngles[active] = activeAngle;
-      newAngles[nextActive] = nextAngle;
-      setAngles(newAngles);
-      setActive(nextActive);
-
-      setNextActive(undefined);
-    } else if (ref && ref.current) {
-      const coordinates = {
-        x: e.pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
-        y:
-          -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
-      };
-
-      const direction = coordinatesToDirection({
-        coordinates: coordinates,
-        dimensions: {
-          x: ref.current.clientWidth,
-          y: ref.current.clientHeight,
-        },
-      });
-
-      const nextView = active === "home" ? direction : "home";
-      setNextActive(nextView);
-
-      const activeAngle = updateAngle({
-        angle: angles[active],
-        direction: direction,
-      });
-
-      const nextAngle = updateAngle({
-        angle: angles[nextView],
-        direction: direction,
-      });
-
-      let newAngles: {
-        [index: string]: { x: number; y: number };
-      } = Object.assign({}, angles);
-
-      newAngles[active] = activeAngle;
-      newAngles[nextView] = nextAngle;
-      setAngles(newAngles);
-      setActive(nextView);
-
-      setNextActive(undefined);
-    }
+  const onClick = () => {
+    return;
   };
 
   return {
@@ -139,4 +138,8 @@ export const useFlipGroup = () => {
     nextActive: nextActive,
     gestureBind: bind,
   };
+};
+
+export const useStopDrag = () => {
+  return useDrag(({ event }) => event.stopPropagation());
 };

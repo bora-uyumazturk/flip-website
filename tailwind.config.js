@@ -4,16 +4,18 @@ module.exports = {
   theme: {
     extend: {
       minWidth: {
-        "192": "40rem",
+        wide: "40rem",
       },
       maxWidth: {
-        "192": "40rem",
+        wide: "40rem",
       },
       minHeight: {
-        "192": "36rem",
+        tall: "32rem",
+        "96": "24rem",
       },
       maxHeight: {
-        "192": "36rem",
+        tall: "32rem",
+        "96": "24rem",
       },
       scale: {
         "160": "1.6",
