@@ -1,4 +1,8 @@
-import React, { MouseEvent } from "react";
+import React from "react";
+
+import { useStopDrag } from "../lib/hooks";
+
+import { isBrowser } from "react-device-detect";
 
 const About = () => {
   return (
@@ -11,21 +15,23 @@ const About = () => {
         />
         <div className="flex-none flex flex-col space-y-2 md:space-y-0 md:justify-between h-48 w-48 md:w-64 py-2">
           <p className="text-lg text-center md:text-left">Hi, I'm Bora</p>
-          <p className="text-gray-500 text-center md:text-left">
+          <p className="text-gray-500 text-center text-sm md:text-base md:text-left">
             I'm a machine learning engineer at{" "}
             <a
-              className="cursor-default hover:underline"
+              className="cursor-pointer hover:underline"
               href="https://www.viaduct.ai"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e: MouseEvent) => e.stopPropagation()}
+              {...useStopDrag()()}
             >
               viaduct.ai
             </a>
             , a startup building machine learning solutions for connected
             vehicles. I also spend time making silly things like this.{" "}
             <span className="font-semibold">
-              Drag, swipe, and click to navigate around.
+              {`${
+                isBrowser ? "Drag, swipe, and click" : "Swipe"
+              } to navigate around`}
             </span>
           </p>
         </div>

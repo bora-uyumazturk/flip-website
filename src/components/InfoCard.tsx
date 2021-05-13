@@ -1,5 +1,7 @@
 import React, { useState, MouseEvent } from "react";
 
+import { useStopDrag } from "../lib/hooks";
+
 interface Link {
   link: string;
   linkName: string;
@@ -21,6 +23,7 @@ const InfoCard = ({ title, abstract, links }: Entry) => {
         setClicked(!clicked);
         e.stopPropagation();
       }}
+      {...useStopDrag()()}
     >
       <div>
         <svg
