@@ -11,7 +11,7 @@ const About = () => {
         />
         <div className="flex-none flex flex-col space-y-2 md:space-y-0 md:justify-between h-48 w-48 md:w-64 py-2">
           <p className="text-lg text-center md:text-left">Hi, I'm Bora</p>
-          <p className="text-gray-500 text-center md:text-left">
+          <p className="text-gray-500 text-center text-sm md:text-base md:text-left">
             I'm a machine learning engineer at{" "}
             <a
               className="cursor-default hover:underline"

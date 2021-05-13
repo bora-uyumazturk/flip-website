@@ -10,5 +10,7 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   user-select: none;
+  touch-action: none;
+  -webskit-user-drag: none;
   /* for chrome, see: https://stackoverflow.com/questions/48701413/css-overflow-scroll-issue-in-chrome */
 }

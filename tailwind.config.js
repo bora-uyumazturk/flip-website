@@ -10,10 +10,10 @@ module.exports = {
         "192": "40rem",
       },
       minHeight: {
-        "192": "24rem",
+        "192": "36rem",
       },
       maxHeight: {
-        "192": "24rem",
+        "192": "36rem",
       },
       scale: {
         "160": "1.6",

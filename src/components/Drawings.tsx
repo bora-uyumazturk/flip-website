@@ -19,16 +19,14 @@ const Drawings = () => {
   return (
     <div className="max-h-full flex flex-col space-y-3 md:space-y-1">
       <div className="text-lg md:max-w-max pr-3">🎨 Gallery</div>
-      <div
-        className="w-full h-full flex flex-col md:flex-row justify-start items-center md:pl-4 py-2 md:pb-3 px-2 md:px-0 md:py-0 md:space-x-5 overflow-auto"
-        onClick={(e: MouseEvent) => e.stopPropagation()}
-      >
+      <div className="w-full h-full flex flex-col md:flex-row justify-start items-center md:pl-4 py-2 md:pb-3 px-2 md:px-0 md:py-0 md:space-x-5 overflow-auto">
         {files.map((f, i) => {
           return (
             <img
               className="shadow-md my-1 p-2 w-60"
               src={`drawings/${f}`}
               alt={f}
+              onClick={(e: MouseEvent) => e.stopPropagation()}
             />
           );
         })}
