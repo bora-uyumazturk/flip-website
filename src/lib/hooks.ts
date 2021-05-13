@@ -1,33 +1,8 @@
+import { useDrag } from "react-use-gesture";
+
 import { useState, useRef, MouseEvent } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
-
-export const useTapToFlip = ({ defaultAngle = { x: 0, y: 0 } }) => {
-  const [angle, setAngle] = useState(defaultAngle);
-  const ref = useRef<HTMLDivElement>(null);
-  const onDivClick = (e: MouseEvent) => {
-    if (ref && ref.current) {
-      const coordinates = {
-        x: e.pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
-        y:
-          -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
-      };
-
-      if (coordinates.x * coordinates.x + coordinates.y * coordinates.y > 100) {
-        const direction = coordinatesToDirection({
-          coordinates: coordinates,
-          dimensions: {
-            x: ref.current.clientWidth,
-            y: ref.current.clientHeight,
-          },
-        });
-        setAngle(updateAngle({ angle: angle, direction: direction }));
-      }
-    }
-  };
-
-  return { angle: angle, ref: ref, onClick: onDivClick };
-};
 
 export const useFlipGroup = () => {
   const defaultAngle: { [index: string]: { x: number; y: number } } = {
@@ -60,8 +35,63 @@ export const useFlipGroup = () => {
 
   const ref = useRef<HTMLDivElement>(null);
 
+  const [direction, setDirection] = useState<
+    "top" | "left" | "bottom" | "right"
+  >("top");
+  const bind = useDrag(
+    ({
+      down,
+      swipe: [x, y],
+      delta: [dx, dy],
+      movement: [swipeX, swipeY],
+      intentional,
+    }) => {
+      if (x !== 0 || y !== 0) {
+        let newDirection: "top" | "left" | "bottom" | "right";
+        if (x === 1) {
+          newDirection = "right";
+        } else if (x === -1) {
+          newDirection = "left";
+        } else if (y === 1) {
+          newDirection = "bottom";
+        } else {
+          newDirection = "top";
+        }
+        setDirection(newDirection);
+
+        const nextView = active === "home" ? newDirection : "home";
+        setNextActive(nextView);
+      } else {
+        setNextActive(undefined);
+      }
+    },
+    { swipeDistance: [10, 10], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
+  );
+
+  // fires after drag event
   const onClick = (e: MouseEvent) => {
-    if (ref && ref.current) {
+    if (nextActive) {
+      const activeAngle = updateAngle({
+        angle: angles[active],
+        direction: direction,
+      });
+
+      const nextAngle = updateAngle({
+        angle: angles[nextActive],
+        direction: direction,
+      });
+
+      let newAngles: {
+        [index: string]: { x: number; y: number };
+      } = Object.assign({}, angles);
+
+      newAngles[active] = activeAngle;
+      newAngles[nextActive] = nextAngle;
+      setAngles(newAngles);
+      setActive(nextActive);
+
+      setNextActive(undefined);
+    } else if (ref && ref.current) {
       const coordinates = {
         x: e.pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
         y:
@@ -76,11 +106,8 @@ export const useFlipGroup = () => {
         },
       });
 
-      // const nextView = active === "home" ? direction : "home";
-
-      const nextView = active === direction ? "home" : direction;
-
-      setNextActive(active === direction ? direction : "home");
+      const nextView = active === "home" ? direction : "home";
+      setNextActive(nextView);
 
       const activeAngle = updateAngle({
         angle: angles[active],
@@ -100,32 +127,8 @@ export const useFlipGroup = () => {
       newAngles[nextView] = nextAngle;
       setAngles(newAngles);
       setActive(nextView);
-    }
-  };
 
-  const onMouseMove = (e: MouseEvent) => {
-    if (ref && ref.current) {
-      const coordinates = {
-        x: e.pageX - ref.current.offsetLeft - ref.current.clientWidth / 2,
-        y:
-          -1 * (e.pageY - ref.current.offsetTop - ref.current.clientHeight / 2),
-      };
-
-      console.log(coordinates);
-      const direction = coordinatesToDirection({
-        coordinates: coordinates,
-        dimensions: {
-          x: ref.current.clientWidth,
-          y: ref.current.clientHeight,
-        },
-      });
-
-      // const nextView = active === "home" ? direction : "home";
-
-      const nextView = active === direction ? "home" : direction;
-
-      setNextActive(nextView);
-      console.log(nextActive);
+      setNextActive(undefined);
     }
   };
 
@@ -134,6 +137,6 @@ export const useFlipGroup = () => {
     ref: ref,
     onClick: onClick,
     nextActive: nextActive,
-    onMouseMove: onMouseMove,
+    gestureBind: bind,
   };
 };

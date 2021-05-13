@@ -18,12 +18,14 @@ const FlipCard = ({
   onRest = () => {},
 }: FlipCardProps) => {
   const [zRot, setzRot] = useState(0);
+  const front = (angle.x + angle.y) % 2 === 0;
+
   const styles = useSpring({
     transform: `perspective(2000px) rotateX(${angle.x * 180}deg) rotateY(${
       angle.y * 180
     }deg)`,
-    opacity: (angle.x + angle.y) % 2 === 0 ? 1 : 0,
-    config: { mass: 10, tension: 500, friction: 80 },
+    opacity: front ? 1 : 0,
+    config: { mass: 10, tension: 300, friction: 80 },
     onRest: onRest,
   });
 

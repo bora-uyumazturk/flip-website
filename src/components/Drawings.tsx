@@ -18,19 +18,10 @@ const files = [
 const Drawings = () => {
   return (
     <div>
+      <div className="text-lg max-w-max pr-3">🎨 Gallery</div>
       <div
-        className="cursor-default text-lg max-w-max pr-3"
-        onClick={(e: MouseEvent) => {
-          e.stopPropagation();
-        }}
-      >
-        🎨 Gallery
-      </div>
-      <div
-        className="cursor-default w-full h-full flex justify-start items-center pl-4 py-2 space-x-5 overflow-x-scroll overflow-y-visible"
-        onClick={(e: MouseEvent) => {
-          e.stopPropagation();
-        }}
+        className="w-full h-full flex justify-start items-center pl-4 py-2 space-x-5 overflow-x-scroll overflow-y-visible"
+        onClick={(e: MouseEvent) => e.stopPropagation()}
       >
         {files.map((f, i) => {
           return (
