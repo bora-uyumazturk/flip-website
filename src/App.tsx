@@ -37,13 +37,13 @@ function App() {
               />
             </FlipCard>
             <FlipCard angle={angles.right}>
-              <Drawings />
+              <Drawings front={(angles.right.x + angles.right.y) % 2 === 0} />
             </FlipCard>{" "}
           </>
         ) : (
           <>
             <FlipCard angle={angles.right}>
-              <Drawings />
+              <Drawings front={(angles.right.x + angles.right.y) % 2 === 0} />
             </FlipCard>
             <FlipCard angle={angles.left}>
               <Reading />

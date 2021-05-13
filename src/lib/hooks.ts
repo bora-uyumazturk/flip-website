@@ -121,8 +121,8 @@ export const useFlipGroup = () => {
 
         setNextActive(undefined);
       }
-    },
-    { swipeDistance: [20, 20], swipeVelocity: [0.1, 0.1], swipeDuration: 1e9 }
+    }
+    // { swipeDistance: [20, 20], swipeVelocity: [0.5, 0.5], swipeDuration: 150 }
   );
 
   const onClick = () => {
