@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <Helmet>
       <head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <title>flipsite</title>
         <meta name="description" content="A flippin' personal website!" />
 
