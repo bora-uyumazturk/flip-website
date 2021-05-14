@@ -24,8 +24,11 @@ const InfoCard = ({ title, abstract, links }: Entry) => {
     <div
       className={`max-w-max flex flex-row space-x-2 flex-none ${
         isMobile ? "underline" : "hover:underline "
-      } text-blue-600 visited:text-purple-600`}
+      } ${clicked ? "text-purple-600" : "text-blue-600"}`}
       {...bind()}
+      onClick={() => {
+        setClicked(true);
+      }}
     >
       <div className="flex flex-col space-y-2">
         <div className="cursor-pointer">

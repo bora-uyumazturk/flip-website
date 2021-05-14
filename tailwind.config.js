@@ -23,9 +23,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {
-      textColor: ["visited"],
-    },
+    extend: {},
   },
   plugins: [],
 };
