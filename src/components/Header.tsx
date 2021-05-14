@@ -19,6 +19,7 @@ const Header = () => {
       <meta property="og:description" content="A flippin' personal website!" />
       <meta
         property="og:image"
+        itemProp="image"
         content="https://flipsite.netlify.app/preview.png"
       />
 
@@ -27,6 +28,7 @@ const Header = () => {
       <meta name="twitter:description" content="A flippin' personal website!" />
       <meta
         name="twitter:image"
+        itemProp="image"
         content="https://flipsite.netlify.app/preview.png"
       />
     </Helmet>
