@@ -6,6 +6,9 @@
 body {
   touch-action: none;
   -webskit-user-drag: none;
+  -webkit-perspective: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  overflow: hidden;
 }
 
 .card {

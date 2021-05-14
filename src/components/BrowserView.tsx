@@ -21,14 +21,14 @@ const BrowserView = () => {
       >
         {supported ? (
           <>
-            <FlipCard angle={angles.right}>
-              <Drawings front={(angles.right.x + angles.right.y) % 2 === 0} />
-            </FlipCard>
             <FlipCard angle={angles.left}>
               <Reading />
             </FlipCard>
             <FlipCard angle={angles.home}>
               <About />
+            </FlipCard>
+            <FlipCard angle={angles.right}>
+              <Drawings front={(angles.right.x + angles.right.y) % 2 === 0} />
             </FlipCard>
             <FlipCard angle={angles.bottom}>
               <SideProjects

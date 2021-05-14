@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from "react";
 
-import { isMobile } from "react-device-detect";
+import { isMobile, isSafari } from "react-device-detect";
 
 import { useStopDrag } from "../lib/hooks";
 
@@ -20,10 +20,15 @@ const InfoCard = ({ title, abstract, links }: Entry) => {
 
   const bind = useStopDrag();
 
-  return isMobile ? (
+  return isMobile || isSafari ? (
     <div
-      className={`max-w-max flex flex-row space-x-2 flex-none underline text-purple-500`}
+      className={`max-w-max flex flex-row space-x-2 flex-none ${
+        isMobile ? "underline" : "hover:underline "
+      } ${clicked ? "text-purple-600" : "text-blue-600"}`}
       {...bind()}
+      onClick={() => {
+        setClicked(true);
+      }}
     >
       <div className="flex flex-col space-y-2">
         <div className="cursor-pointer">
