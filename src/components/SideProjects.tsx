@@ -65,7 +65,7 @@ const sideProjects = [
   {
     title: "Functional Analysis of Wearable Data",
     abstract:
-      "In this project, we sought to extract important features from longitudinal wearable data using various functional data analysis techqniues. The methods we applied, the discrete fourier transform, PCA, nonnegative matrix factorization, and kmeans, were all variants of matrix factorization. We validated these methods on the downstream task of predicting resting heart rate of tracked subjects. We found that applying the DFT to data on a weekly timescale gave the best predictive performance, suggesting that regularity of activity patterns on longer time scales may help explain variation in patient fitness, even after accoutning for average activity levels. Finally, we discuss possible interpretations of different frequency components of the DFT as well as their implications for resting heart rate.",
+      "In this project, we sought to extract important features from longitudinal wearable data using various functional data analysis techniques. The methods we applied, the discrete fourier transform, PCA, nonnegative matrix factorization, and kmeans, were all variants of matrix factorization. We validated these methods on the downstream task of predicting resting heart rate of tracked subjects. We found that applying the DFT to data on a weekly timescale gave the best predictive performance, suggesting that regularity of activity patterns on longer time scales may help explain variation in patient fitness, even after accoutning for average activity levels. Finally, we discuss possible interpretations of different frequency components of the DFT as well as their implications for resting heart rate.",
     links: [
       {
         link:
