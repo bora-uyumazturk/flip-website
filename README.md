@@ -4,7 +4,7 @@ A business-card inspired personal website design. Visitors can navigate by click
 
 ## Tools
 
-In additiion to the usual (TypeScript, React, and TailwindCSS), I used [react-use-gesture](https://github.com/pmndrs/react-use-gesture) for handling swipes and [react-spring](https://github.com/pmndrs/react-spring)
+In addition to the usual (TypeScript, React, and TailwindCSS), I used [react-use-gesture](https://github.com/pmndrs/react-use-gesture) for handling swipes and [react-spring](https://github.com/pmndrs/react-spring)
 for animations. [React-detect-device](https://github.com/duskload/react-device-detect) also ended up being very helpful.
 
 ## Directions
