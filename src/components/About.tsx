@@ -35,7 +35,7 @@ const ErrorCopy = () => {
     <p className="text-gray-500 text-center text-sm md:text-base md:text-left">
       Normally this site would be interactive, but unfortunately, your browser
       is <span className="font-semibold">unsupported</span>. Supported browsers
-      include Chrome, Safari, and Brave.
+      include Chrome, Safari, Brave, and Opera.
     </p>
   );
 };
