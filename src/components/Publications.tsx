@@ -39,7 +39,7 @@ const publications = [
       "The goal of this paper was to analyze the voting behavior of individuals participating in public, consensus voting schemes from a game theoretic perspective. We presented a model of public voting incorporating social pressures and proved the existence of an equilibrium in which truthfulness of votes decays as number of individuals increases in consensus voting. We then compared qualitative predictions from model with empirical evidence from a community at Stanford which implements consensus voting. Our findings suggest that instead of acting as a vehicle for change, public consensus voting may in fact reinforce status quo.",
     links: [
       {
-        link: "https://www.nature.com/articles/s41746-020-0232-8",
+        link: "https://bora-uyumazturk.github.io/assets/majority_minority.pdf",
         linkName: "paper",
       },
     ],
