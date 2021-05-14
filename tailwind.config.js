@@ -10,11 +10,11 @@ module.exports = {
         wide: "40rem",
       },
       minHeight: {
-        tall: "32rem",
+        tall: "30rem",
         "96": "24rem",
       },
       maxHeight: {
-        tall: "32rem",
+        tall: "30rem",
         "96": "24rem",
       },
       scale: {

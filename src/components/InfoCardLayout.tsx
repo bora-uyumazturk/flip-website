@@ -35,7 +35,7 @@ const InfoCardLayout = ({
   }, [front]);
 
   return (
-    <div className="max-h-full flex flex-col space-y-3">
+    <div className="max-h-full flex flex-col space-y-5">
       <div className="text-lg max-w-max pr-3">{title}</div>
       <div
         className={`max-h-full w-full max-w-max flex flex-col space-y-4 ${

@@ -14,7 +14,7 @@ const MobileView = () => {
     <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-200 md:space-y-20">
       <div
         {...gestureBind()}
-        className="relative h-full w-full max-h-tall min-h-tall max-w-xs md:max-h-96 md:max-w-wide md:min-h-96 md:min-w-wide"
+        className="relative h-full w-full max-h-tall min-h-tall max-w-xs md:max-h-96 md:max-w-wide md:min-h-96 md:min-w-wide mb-10"
         ref={ref}
         onClick={onClick}
       >

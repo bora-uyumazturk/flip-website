@@ -43,7 +43,7 @@ const ErrorCopy = () => {
 const About = ({ browserError = false }: { browserError?: boolean }) => {
   return (
     <div className="h-full w-full flex justify-center items-center">
-      <div className="w-full max-w-max flex flex-col space-y-2 md:flex-row md:space-x-10 justify-center items-center">
+      <div className="w-full max-w-max flex flex-col space-y-6 md:space-y-2 md:flex-row md:space-x-10 justify-center items-center">
         <img
           className="h-40 w-40 md:h-48 md:w-48 rounded-full border border-black shadow-sm"
           src="bora_pic.jpeg"
