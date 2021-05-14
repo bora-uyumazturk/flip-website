@@ -6,10 +6,10 @@ const Header = () => {
       <title>flipsite</title>
       <meta name="description" content="A flippin' personal website!" />
 
-      <meta itemprop="name" content="flipsite" />
-      <meta itemprop="description" content="A flippin' personal website!" />
+      <meta itemProp="name" content="flipsite" />
+      <meta itemProp="description" content="A flippin' personal website!" />
       <meta
-        itemprop="image"
+        itemProp="image"
         content="https://flipsite.netlify.app/preview.png"
       />
 
