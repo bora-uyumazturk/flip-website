@@ -3,17 +3,31 @@ import { Helmet } from "react-helmet";
 const Header = () => {
   return (
     <Helmet>
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://flipsite.netlify.app" />
-      <meta property="twitter:creator" content="notsleepingturk" />
-      <meta property="twitter:title" content="flipsite" />
+      <title>flipsite</title>
+      <meta name="description" content="A flippin' personal website!" />
+
+      <meta itemprop="name" content="flipsite" />
+      <meta itemprop="description" content="A flippin' personal website!" />
       <meta
-        property="twitter:description"
-        content="A flippin' personal website!"
+        itemprop="image"
+        content="https://flipsite.netlify.app//preview.png"
       />
+
+      <meta property="og:url" content="https://flipsite.netlify.app" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="flipsite" />
+      <meta property="og:description" content="A flippin' personal website!" />
       <meta
-        property="twitter:image"
-        content="https://flipsite.netlify.app/preview.png"
+        property="og:image"
+        content="https://flipsite.netlify.app//preview.png"
+      />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="flipsite" />
+      <meta name="twitter:description" content="A flippin' personal website!" />
+      <meta
+        name="twitter:image"
+        content="https://flipsite.netlify.app//preview.png"
       />
     </Helmet>
   );
