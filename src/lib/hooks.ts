@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 
 import { coordinatesToDirection, updateAngle } from "./utils";
 
-import { isMobile } from "react-device-detect";
+import { isMobile, isBrowser, isFirefox } from "react-device-detect";
 
 export const useFlipGroup = () => {
   const defaultAngle: { [index: string]: { x: number; y: number } } = {
@@ -144,4 +144,8 @@ export const useStopDrag = () => {
       event.stopPropagation();
     }
   });
+};
+
+export const useFlipSupported = () => {
+  return !(isFirefox && isBrowser);
 };
