@@ -22,7 +22,7 @@ const Drawings = ({ front }: { front: boolean }) => {
 
   useEffect(() => {
     if (front) {
-      setOverflow("overflow-auto");
+      setOverflow("overflow-scroll");
     } else {
       setOverflow("overflow-hidden");
     }
