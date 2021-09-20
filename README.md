@@ -1,6 +1,7 @@
 # [Flipsite](https://flipsite.netlify.app/)
 
-A business-card inspired personal website design. Visitors can navigate by clicking, dragging, and swiping the mouse. 
+A business-card inspired personal website design. Visitors can navigate by clicking, dragging, and swiping the mouse. Note: Currently this runs best on 
+Safari, and unfortunately is a bit of a mess on Chrome and Firefox.
 
 ## Tools
 
